@@ -60,9 +60,9 @@ class ProductScrapperService
   def upload_media_to_wordpress(url, title)
     begin
       client = WordpressClient.new(
-        url: 'https://madhicorporation.com/surgical',
-        username: 'madhi',
-        password: 'EU6@6%tIEm'
+        url: ENV["APP_URL"],
+        username: ENV["WORDPRESS_URL"],
+        password: ENV["WORDPRESS_PASS"]
       )
       media = WordpressClient::Media.new(link: url, title_html: title)
       media.upload!(client)
